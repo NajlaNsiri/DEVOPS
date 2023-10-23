@@ -1,11 +1,16 @@
-pipeline {
-    agent any
+ agent any
 
     stages {
-        stage('Hello') {
+        stage('Checkout GIT') {
             steps {
-                echo 'Hello World'
+                echo 'pulling...'
+                git branch: 'GestionInvoice',
+                url: 'https://github.com/NajlaNsiri/DEVOPS'
+            }
+        }
+        stage('testing Maven') {
+            steps {
+                sh "mvn -version"
             }
         }
     }
-}
